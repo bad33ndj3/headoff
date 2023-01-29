@@ -20,7 +20,7 @@ func NewBlueUtil() (*BlueUtil, error) {
 
 // Disconnect disconnects the given device.
 func (b *BlueUtil) Disconnect(device device.Info) error {
-	return exec.Command(blueutilCmd, "--disconnect", device.Address()).Run()
+	return exec.Command(blueutilCmd, "--disconnect", device.Address()).Run() //nolint:gosec // blueutil is a trusted binary.
 }
 
 // checkBlueutilAvailability checks if blueutil is available in PATH.

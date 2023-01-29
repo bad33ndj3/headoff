@@ -1,4 +1,5 @@
-package system_profiler
+// Package sysprof contains an implementation of device.Lister for the macOS system_profiler command.
+package sysprof
 
 import (
 	"bytes"
@@ -10,14 +11,17 @@ import (
 	"github.com/bad33ndj3/headoff/pkg/device"
 )
 
+// SystemProfiler is a wrapper for the system_profiler command.
 type SystemProfiler struct {
 }
 
+// List returns a list of devices.
 func (s *SystemProfiler) List() ([]device.Info, error) {
 	output := s.bluetoothInfo()
 	return s.extractDevices(output), nil
 }
 
+// extractDevices extracts the devices from system_profiler output.
 func (s *SystemProfiler) extractDevices(input string) []device.Info {
 	lines := strings.Split(input, "\n")
 	var devices []*btDevice
@@ -74,6 +78,7 @@ func (s *SystemProfiler) filterWrongDevices(devices []*btDevice) []device.Info {
 	return result
 }
 
+// bluetoothInfo returns the output of the system_profiler command.
 func (s *SystemProfiler) bluetoothInfo() string {
 	cmd := exec.Command("system_profiler", "SPBluetoothDataType")
 	var out bytes.Buffer

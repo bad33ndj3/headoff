@@ -6,11 +6,11 @@ import (
 
 	"github.com/bad33ndj3/headoff/pkg/blueutil"
 	"github.com/bad33ndj3/headoff/pkg/device"
-	"github.com/bad33ndj3/headoff/pkg/system_profiler"
+	"github.com/bad33ndj3/headoff/pkg/sysprof"
 )
 
 func main() {
-	systemProfiler := &system_profiler.SystemProfiler{}
+	systemProfiler := &sysprof.SystemProfiler{}
 
 	var blueUtil device.Disconnecter
 	blueUtil, err := blueutil.NewBlueUtil()

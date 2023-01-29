@@ -1,4 +1,4 @@
-package system_profiler
+package sysprof
 
 import (
 	"github.com/bad33ndj3/headoff/pkg/device"

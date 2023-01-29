@@ -1,4 +1,4 @@
-package system_profiler
+package sysprof
 
 import (
 	"testing"
